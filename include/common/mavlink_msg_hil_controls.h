@@ -4,7 +4,7 @@
 
 typedef struct __mavlink_hil_controls_t 
 {
-	uint64_t uint64_t; ///< Timestamp (microseconds since UNIX epoch or microseconds since system boot)
+	uint64_t time_us; ///< Timestamp (microseconds since UNIX epoch or microseconds since system boot)
 	float roll_ailerons; ///< Control output -3 .. 1
 	float pitch_elevator; ///< Control output -1 .. 1
 	float yaw_rudder; ///< Control output -1 .. 1
@@ -22,7 +22,7 @@ typedef struct __mavlink_hil_controls_t
  * @param component_id ID of this component (e.g. 200 for IMU)
  * @param msg The MAVLink message to compress the data into
  *
- * @param uint64_t Timestamp (microseconds since UNIX epoch or microseconds since system boot)
+ * @param time_us Timestamp (microseconds since UNIX epoch or microseconds since system boot)
  * @param roll_ailerons Control output -3 .. 1
  * @param pitch_elevator Control output -1 .. 1
  * @param yaw_rudder Control output -1 .. 1
@@ -31,12 +31,12 @@ typedef struct __mavlink_hil_controls_t
  * @param nav_mode Navigation mode (MAV_NAV_MODE)
  * @return length of the message in bytes (excluding serial stream start sign)
  */
-static inline uint16_t mavlink_msg_hil_controls_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg, uint64_t uint64_t, float roll_ailerons, float pitch_elevator, float yaw_rudder, float throttle, uint8_t mode, uint8_t nav_mode)
+static inline uint16_t mavlink_msg_hil_controls_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg, uint64_t time_us, float roll_ailerons, float pitch_elevator, float yaw_rudder, float throttle, uint8_t mode, uint8_t nav_mode)
 {
 	uint16_t i = 0;
 	msg->msgid = MAVLINK_MSG_ID_HIL_CONTROLS;
 
-	i += put_uint64_t_by_index(uint64_t, i, msg->payload); // Timestamp (microseconds since UNIX epoch or microseconds since system boot)
+	i += put_uint64_t_by_index(time_us, i, msg->payload); // Timestamp (microseconds since UNIX epoch or microseconds since system boot)
 	i += put_float_by_index(roll_ailerons, i, msg->payload); // Control output -3 .. 1
 	i += put_float_by_index(pitch_elevator, i, msg->payload); // Control output -1 .. 1
 	i += put_float_by_index(yaw_rudder, i, msg->payload); // Control output -1 .. 1
@@ -53,7 +53,7 @@ static inline uint16_t mavlink_msg_hil_controls_pack(uint8_t system_id, uint8_t 
  * @param component_id ID of this component (e.g. 200 for IMU)
  * @param chan The MAVLink channel this message was sent over
  * @param msg The MAVLink message to compress the data into
- * @param uint64_t Timestamp (microseconds since UNIX epoch or microseconds since system boot)
+ * @param time_us Timestamp (microseconds since UNIX epoch or microseconds since system boot)
  * @param roll_ailerons Control output -3 .. 1
  * @param pitch_elevator Control output -1 .. 1
  * @param yaw_rudder Control output -1 .. 1
@@ -62,12 +62,12 @@ static inline uint16_t mavlink_msg_hil_controls_pack(uint8_t system_id, uint8_t 
  * @param nav_mode Navigation mode (MAV_NAV_MODE)
  * @return length of the message in bytes (excluding serial stream start sign)
  */
-static inline uint16_t mavlink_msg_hil_controls_pack_chan(uint8_t system_id, uint8_t component_id, uint8_t chan, mavlink_message_t* msg, uint64_t uint64_t, float roll_ailerons, float pitch_elevator, float yaw_rudder, float throttle, uint8_t mode, uint8_t nav_mode)
+static inline uint16_t mavlink_msg_hil_controls_pack_chan(uint8_t system_id, uint8_t component_id, uint8_t chan, mavlink_message_t* msg, uint64_t time_us, float roll_ailerons, float pitch_elevator, float yaw_rudder, float throttle, uint8_t mode, uint8_t nav_mode)
 {
 	uint16_t i = 0;
 	msg->msgid = MAVLINK_MSG_ID_HIL_CONTROLS;
 
-	i += put_uint64_t_by_index(uint64_t, i, msg->payload); // Timestamp (microseconds since UNIX epoch or microseconds since system boot)
+	i += put_uint64_t_by_index(time_us, i, msg->payload); // Timestamp (microseconds since UNIX epoch or microseconds since system boot)
 	i += put_float_by_index(roll_ailerons, i, msg->payload); // Control output -3 .. 1
 	i += put_float_by_index(pitch_elevator, i, msg->payload); // Control output -1 .. 1
 	i += put_float_by_index(yaw_rudder, i, msg->payload); // Control output -1 .. 1
@@ -88,14 +88,14 @@ static inline uint16_t mavlink_msg_hil_controls_pack_chan(uint8_t system_id, uin
  */
 static inline uint16_t mavlink_msg_hil_controls_encode(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg, const mavlink_hil_controls_t* hil_controls)
 {
-	return mavlink_msg_hil_controls_pack(system_id, component_id, msg, hil_controls->uint64_t, hil_controls->roll_ailerons, hil_controls->pitch_elevator, hil_controls->yaw_rudder, hil_controls->throttle, hil_controls->mode, hil_controls->nav_mode);
+	return mavlink_msg_hil_controls_pack(system_id, component_id, msg, hil_controls->time_us, hil_controls->roll_ailerons, hil_controls->pitch_elevator, hil_controls->yaw_rudder, hil_controls->throttle, hil_controls->mode, hil_controls->nav_mode);
 }
 
 /**
  * @brief Send a hil_controls message
  * @param chan MAVLink channel to send the message
  *
- * @param uint64_t Timestamp (microseconds since UNIX epoch or microseconds since system boot)
+ * @param time_us Timestamp (microseconds since UNIX epoch or microseconds since system boot)
  * @param roll_ailerons Control output -3 .. 1
  * @param pitch_elevator Control output -1 .. 1
  * @param yaw_rudder Control output -1 .. 1
@@ -105,10 +105,10 @@ static inline uint16_t mavlink_msg_hil_controls_encode(uint8_t system_id, uint8_
  */
 #ifdef MAVLINK_USE_CONVENIENCE_FUNCTIONS
 
-static inline void mavlink_msg_hil_controls_send(mavlink_channel_t chan, uint64_t uint64_t, float roll_ailerons, float pitch_elevator, float yaw_rudder, float throttle, uint8_t mode, uint8_t nav_mode)
+static inline void mavlink_msg_hil_controls_send(mavlink_channel_t chan, uint64_t time_us, float roll_ailerons, float pitch_elevator, float yaw_rudder, float throttle, uint8_t mode, uint8_t nav_mode)
 {
 	mavlink_message_t msg;
-	mavlink_msg_hil_controls_pack_chan(mavlink_system.sysid, mavlink_system.compid, chan, &msg, uint64_t, roll_ailerons, pitch_elevator, yaw_rudder, throttle, mode, nav_mode);
+	mavlink_msg_hil_controls_pack_chan(mavlink_system.sysid, mavlink_system.compid, chan, &msg, time_us, roll_ailerons, pitch_elevator, yaw_rudder, throttle, mode, nav_mode);
 	mavlink_send_uart(chan, &msg);
 }
 
@@ -116,11 +116,11 @@ static inline void mavlink_msg_hil_controls_send(mavlink_channel_t chan, uint64_
 // MESSAGE HIL_CONTROLS UNPACKING
 
 /**
- * @brief Get field uint64_t from hil_controls message
+ * @brief Get field time_us from hil_controls message
  *
  * @return Timestamp (microseconds since UNIX epoch or microseconds since system boot)
  */
-static inline uint64_t mavlink_msg_hil_controls_get_uint64_t(const mavlink_message_t* msg)
+static inline uint64_t mavlink_msg_hil_controls_get_time_us(const mavlink_message_t* msg)
 {
 	generic_64bit r;
 	r.b[7] = (msg->payload)[0];
@@ -222,7 +222,7 @@ static inline uint8_t mavlink_msg_hil_controls_get_nav_mode(const mavlink_messag
  */
 static inline void mavlink_msg_hil_controls_decode(const mavlink_message_t* msg, mavlink_hil_controls_t* hil_controls)
 {
-	hil_controls->uint64_t = mavlink_msg_hil_controls_get_uint64_t(msg);
+	hil_controls->time_us = mavlink_msg_hil_controls_get_time_us(msg);
 	hil_controls->roll_ailerons = mavlink_msg_hil_controls_get_roll_ailerons(msg);
 	hil_controls->pitch_elevator = mavlink_msg_hil_controls_get_pitch_elevator(msg);
 	hil_controls->yaw_rudder = mavlink_msg_hil_controls_get_yaw_rudder(msg);

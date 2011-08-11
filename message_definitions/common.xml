@@ -837,7 +837,7 @@ of the controller before actual flight and to assist with tuning controller para
         </message>
         <message id="68" name="HIL_CONTROLS">
             <description>Hardware in the loop control outputs</description>
-            <field name="uint64_t" type="uint64_t">Timestamp (microseconds since UNIX epoch or microseconds since system boot)</field>
+            <field name="time_us" type="uint64_t">Timestamp (microseconds since UNIX epoch or microseconds since system boot)</field>
             <field name="roll_ailerons" type="float">Control output -3 .. 1</field>
             <field name="pitch_elevator" type="float">Control output -1 .. 1</field>
             <field name="yaw_rudder" type="float">Control output -1 .. 1</field>
