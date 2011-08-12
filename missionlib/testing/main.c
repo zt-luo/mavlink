@@ -67,7 +67,7 @@ void mavlink_wpm_send_gcs_string(const char* string);
 uint64_t mavlink_wpm_get_system_timestamp();
 
 /* 4: Include waypoint protocol */
-#include <waypoints.h>
+#include "waypoints.h"
 mavlink_wpm_storage wpm;
 
 
