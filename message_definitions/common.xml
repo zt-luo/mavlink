@@ -799,8 +799,8 @@ of the controller before actual flight and to assist with tuning controller para
                <field type="uint8_t" name="target_system">The target requested to send the message stream.</field>
                <field type="uint8_t" name="target_component">The target requested to send the message stream.</field>
                <field type="uint8_t" name="req_stream_id">The ID of the requested message type</field>
-               <field type="uint16_t" name="req_message_rate">The requested interval between two messages of this type</field>
-               <field type="uint8_t" name="start_stop">Update rate in Hertz</field>
+               <field type="uint16_t" name="req_message_rate">Update rate in Hertz</field>
+               <field type="uint8_t" name="start_stop">1 to start sending, 0 to stop sending.</field>
           </message>
         <message id="67" name="HIL_STATE">
             <description>This packet is useful for high throughput
