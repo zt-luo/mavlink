@@ -259,6 +259,18 @@
             <field name="descriptor" type="uint8_t[32]">Descriptor</field>
             <field name="response" type="float">Harris operator response at this location</field>
         </message>
+
+        <message name="VISUAL_ODOMETRY" id="180">
+           <description>Visual odometry estimate describing relative pose between two frames</description>
+           <field name="frame1_time_us" type="uint64_t">Time at which frame 1 was captured (in microseconds since unix epoch)</field>
+           <field name="frame2_time_us" type="uint64_t">Time at which frame 2 was captured (in microseconds since unix epoch)</field>
+           <field name="x"   type="float">Relative X position</field>
+           <field name="y"   type="float">Relative Y position</field>
+           <field name="z"   type="float">Relative Z position</field>
+           <field name="roll" type="float">Relative roll angle in rad</field>
+           <field name="pitch" type="float">Relative pitch angle in rad</field>
+           <field name="yaw" type="float">Relative yaw angle in rad</field>
+       </message>
         
     </messages>
 </mavlink>
