@@ -27,7 +27,7 @@
             <field name="thrust_manual" type="uint8_t">thrust auto:0, manual:1</field>
         </message>
         
-        <message name="SET_CAM_SHUTTER" id="100">
+        <message name="SET_CAM_SHUTTER" id="190">
             <field name="cam_no" type="uint8_t">Camera id</field>
             <field name="cam_mode" type="uint8_t">Camera mode: 0 = auto, 1 = manual</field>
             <field name="trigger_pin" type="uint8_t">Trigger pin, 0-3 for PtGrey FireFly</field>
