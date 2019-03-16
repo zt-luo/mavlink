@@ -672,6 +672,9 @@
       <entry value="4" name="MAV_MOUNT_MODE_GPS_POINT">
         <description>Load neutral position and start to point to Lat,Lon,Alt</description>
       </entry>
+      <entry value="5" name="MAV_MOUNT_MODE_SYSID_TARGET">
+        <description>Follow system ID</description>
+      </entry>
     </enum>
     <!-- UAVCAN node health enumeration -->
     <enum name="UAVCAN_NODE_HEALTH">
@@ -1187,6 +1190,16 @@
       <entry value="197" name="MAV_CMD_DO_SET_ROI_NONE">
         <description>Cancels any previous ROI command returning the vehicle/sensors to default flight characteristics. This can then be used by the vehicles control system to control the vehicle attitude and the attitude of various sensors such as cameras.</description>
         <param index="1">Empty</param>
+        <param index="2">Empty</param>
+        <param index="3">Empty</param>
+        <param index="4">Empty</param>
+        <param index="5">Empty</param>
+        <param index="6">Empty</param>
+        <param index="7">Empty</param>
+      </entry>
+      <entry value="198" name="MAV_CMD_DO_SET_ROI_SYSID">
+        <description>Follow vehicle by system ID.</description>
+        <param index="1">sysid</param>
         <param index="2">Empty</param>
         <param index="3">Empty</param>
         <param index="4">Empty</param>
