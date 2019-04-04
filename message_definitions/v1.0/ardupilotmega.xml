@@ -1602,5 +1602,23 @@
       <field type="uint16_t[4]" name="rpm" units="rpm">RPM (eRPM).</field>
       <field type="uint16_t[4]" name="count">count of telemetry packets received (wraps at 65535).</field>
     </message>
+    <!-- ARMs ArduSub messages -->
+    <message id="11065" name="DEPTH_HOLD">
+      <description>Hold desire depth.</description>
+      <field type="uint8_t" name="cmd">1 for enable, 0 for disable.</field>
+      <field type="float" name="depth" units="m">desire depth.</field>
+    </message>
+    <message id="11066" name="ATTITUDE_HOLD">
+      <description>Hold desire attitude.</description>
+      <field type="uint8_t" name="cmd">1 for enable, 0 for disable.</field>
+      <field type="float" name="yaw" units="degree">desire yaw.</field>
+      <field type="float" name="pitch" units="degree">desire pitch.</field>
+      <field type="float" name="roll" units="roll">desire roll.</field>
+    </message>
+    <message id="11067" name="FLIP_TRICK">
+      <description>Do flip trick.</description>
+      <field type="uint8_t" name="tpye">0 for canle.</field>
+      <field type="float" name="count" units="m">flip count.</field>
+    </message>
   </messages>
 </mavlink>
