@@ -1618,7 +1618,7 @@
     <message id="11067" name="FLIP_TRICK">
       <description>Do flip trick.</description>
       <field type="uint8_t" name="tpye">0 for canle.</field>
-      <field type="float" name="count" units="m">flip count.</field>
+      <field type="float" name="value" units="degree">flip value.</field>
     </message>
   </messages>
 </mavlink>
